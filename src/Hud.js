@@ -32,9 +32,14 @@ export default function Hud(props) {
       <CardContent>
         <Typography variant="h4">Mafia Status</Typography>
         <Typography variant="h5">Day: {props.day || 1}</Typography>
-        <br/>
+        <br />
         <Rating title="Mafia Trust Rating" value={props.trust} />
         <Rating title="Mafia Suspicion Rating" value={props.suspicion} />
+        <Typography variant="h5">
+          Informant Points
+          <br />
+          {props.inform || 0}
+        </Typography>
       </CardContent>
       <CardActions></CardActions>
     </Card>
