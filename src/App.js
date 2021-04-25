@@ -83,6 +83,7 @@ function nextJob(trust) {
   nextJob.inform = false
   return nextJob
 }
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -112,7 +113,8 @@ class App extends Component {
   }
 
   refuseJob = () => {
-    this.setState({ day: this.state.day + 1 })
+    const day = this.state.day + 1;
+    this.setState({ day, nextJob: nextJob(this.state.trust) })
   }
 
   prepareForJob = () => {
