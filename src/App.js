@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
+import Paper from '@material-ui/core/Paper'
+
 
 const jobtypes = {
   driver: {
@@ -309,15 +311,28 @@ class App extends Component {
  
     if (this.state.suspicion>=1) {
       return <div>
-        You lose
+        <Typography variant="h4" align="center">
+          <br/>You were discovered. You now sleep with the fishes.
+        </Typography>
       </div>
       
     }
-    else if (this.state.day>30) {
+    else if (this.state.day>30 && this.state.inform>=3000) {
       return <div>
-        Game over
+        <Typography variant="h4" align="center">
+          <br/>Congratulations! You successfully infiltrated and informed on the Mafia. Enjoy your bonus and promotion!
+        </Typography>
       </div>
     }
+    
+    else if (this.state.day>30 && this.state.inform<3000) {
+      return <div>
+        <Typography variant="h4" align="center">
+          <br/>Game over. You ran out of time. Better luck next time.
+        </Typography>
+      </div>
+    }
+
     else return<div> 
       <Hud
       suspicion={this.state.suspicion}
@@ -363,8 +378,31 @@ class App extends Component {
         Refuse Job
       </Button>
     </FormGroup>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <Typography variant="h6" align="center">
+          You are a police detective who has inflitrated the mafia. <br/> Earn 3000 informant points in 30 days without the mafia catching wind. <br/> If they figure you out, you won't be around very long. <br/> <br/>
+    </Typography>
+
+    <Typography variant="body2" align="center">
+      Hint: Informing on bigger jobs will earn you more points with the police force. But informing on multiple jobs in a row looks suspicious!
+    </Typography>
+
+    <audio src='tunnel.mp3' loop controls autoPlay/>
   </div>;
   }
 }
+
+// Music from Uppbeat (free for Creators!):
+// https://uppbeat.io/t/danijel-zambo/tunnel
+// License code: BK550MQMAIOL7Q9G
 
 export default App
